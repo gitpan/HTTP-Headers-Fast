@@ -4,7 +4,7 @@ use warnings;
 use 5.00800;
 use Carp ();
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our $TRANSLATE_UNDERSCORE = 1;
 
@@ -503,16 +503,15 @@ The interface is same as HTTP::Headers.
 
 =head1 WHY YET ANOTHER ONE?
 
-HTTP::Headers is a very good.But, HTTP::Headers is bit slow.
-I need more fast implementation as soon as possible =)
+HTTP::Headers is a very good. But I needed a faster implementation, fast  =)
 
-And, HTTP::Headers is a part of LWP.LWP has a lot of dependencies :( I want less dependencies.
+HTTP::Headers is also a part of LWP, but I only needed HTTP::Headers. I didn't want to require more modules than necessary.
 
 =head1 @ISA HACK
 
-    unshift @HTTP::Headers::Fast::ISA, 'HTTP::Headers';
+If you want HTTP::Headers::Fast to pretend like it's really HTTP::Headers, you can try the following hack:
 
-If you want to cheat the perl, copy and paste above code.
+    unshift @HTTP::Headers::Fast::ISA, 'HTTP::Headers';
 
 =head1 BENCHMARK
 
