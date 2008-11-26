@@ -1,0 +1,24 @@
+---
+abstract: 'faster implementation of HTTP::Headers'
+author:
+  - 'Tokuhiro Matsuno <tokuhirom@gmail.com>'
+build_requires:
+  Test::More: 0
+  Test::Warn: 0
+  YAML: 0
+distribution_type: module
+generated_by: 'Module::Install version 0.77'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: HTTP-Headers-Fast
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  perl: 5.8.0
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.01
