@@ -4,7 +4,7 @@ use warnings;
 use 5.00800;
 use Carp ();
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 our $TRANSLATE_UNDERSCORE = 1;
 
@@ -319,7 +319,7 @@ sub _process_newline {
     my $endl = shift;
     # must handle header values with embedded newlines with care
     s/\s+$//;        # trailing newlines and space must go
-    s/\n\n+/\n/g;    # no empty lines
+    s/\n(\x0d?\n)+/\n/g;     # no empty lines
     s/\n([^\040\t])/\n $1/g; # intial space for continuation
     s/\n/$endl/g;    # substitute with requested line ending
     $_;
@@ -592,6 +592,12 @@ If you want HTTP::Headers::Fast to pretend like it's really HTTP::Headers, you c
 
     Tokuhiro Matsuno E<lt>tokuhirom@gmail.comE<gt>
     Daisuke Maki
+
+=head1 THANKS TO
+
+markstos
+
+Tatsuhiko Miyagawa
 
 =head1 SEE ALSO
 
