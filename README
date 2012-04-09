@@ -1,27 +1,93 @@
-This is Perl module HTTP::Headers::Fast.
+NAME
+    HTTP::Headers::Fast - faster implementation of HTTP::Headers
 
-INSTALLATION
+SYNOPSIS
+      use HTTP::Headers::Fast;
+      # and, same as HTTP::Headers.
 
-HTTP::Headers::Fast installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+DESCRIPTION
+    HTTP::Headers::Fast is a perl class for parsing/writing HTTP headers.
 
-    % cpan HTTP::Headers::Fast
+    The interface is same as HTTP::Headers.
 
-Download it, unpack it, then build it as per the usual:
+WHY YET ANOTHER ONE?
+    HTTP::Headers is a very good. But I needed a faster implementation, fast
+    =)
 
-    % perl Makefile.PL
-    % make && make test
+ADDITIONAL METHODS
+    as_string_without_sort
+        as_string method sorts the header names.But, sorting is bit slow.
 
-Then install it:
+        In this method, stringify the instance of HTTP::Headers::Fast
+        without sorting.
 
-    % make install
+@ISA HACK
+    If you want HTTP::Headers::Fast to pretend like it's really
+    HTTP::Headers, you can try the following hack:
 
-DOCUMENTATION
+        unshift @HTTP::Headers::Fast::ISA, 'HTTP::Headers';
 
-HTTP::Headers::Fast documentation is available as in POD. So you can do:
+BENCHMARK
+        HTTP::Headers 5.818, HTTP::Headers::Fast 0.01
 
-    % perldoc HTTP::Headers::Fast
+        -- push_header
+                Rate orig fast
+        orig 144928/s   -- -20%
+        fast 181818/s  25%   --
 
-to read the documentation online with your favorite pager.
+        -- push_header_many
+                Rate orig fast
+        orig 74627/s   -- -16%
+        fast 89286/s  20%   --
 
-Tokuhiro Matsuno
+        -- get_date
+                Rate orig fast
+        orig 34884/s   -- -14%
+        fast 40541/s  16%   --
+
+        -- set_date
+                Rate orig fast
+        orig 21505/s   -- -19%
+        fast 26525/s  23%   --
+
+        -- scan
+                Rate orig fast
+        orig 57471/s   --  -1%
+        fast 57803/s   1%   --
+
+        -- get_header
+                Rate orig fast
+        orig 120337/s   -- -24%
+        fast 157729/s  31%   --
+
+        -- set_header
+                Rate orig fast
+        orig  79745/s   -- -30%
+        fast 113766/s  43%   --
+
+        -- get_content_length
+                Rate orig fast
+        orig 182482/s   -- -77%
+        fast 793651/s 335%   --
+
+        -- as_string
+                Rate orig fast
+        orig 23753/s   -- -41%
+        fast 40161/s  69%   --
+
+AUTHOR
+        Tokuhiro Matsuno E<lt>tokuhirom@gmail.comE<gt>
+        Daisuke Maki
+
+THANKS TO
+    markstos
+
+    Tatsuhiko Miyagawa
+
+SEE ALSO
+    HTTP::Headers
+
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+

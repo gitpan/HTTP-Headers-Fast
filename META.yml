@@ -1,13 +1,13 @@
 ---
 abstract: 'faster implementation of HTTP::Headers'
 author:
-  - 'Tokuhiro Matsuno <tokuhirom@gmail.com>'
+  - 'Tokuhiro Matsuno E<lt>tokuhirom@gmail.comE<gt>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
+  Test::More: 0.98
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 1.00'
+  Module::Build: 0.38
+dynamic_config: 0
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -18,10 +18,13 @@ no_index:
     - inc
     - t
     - xt
+provides:
+  HTTP::Headers::Fast:
+    file: lib/HTTP/Headers/Fast.pm
+    version: 0.14
 requires:
-  Filter::Util::Call: 0
   HTTP::Date: 0
-  perl: 5.8.0
+  perl: 5.00800
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.13
+version: 0.14
