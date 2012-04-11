@@ -21,10 +21,10 @@ no_index:
 provides:
   HTTP::Headers::Fast:
     file: lib/HTTP/Headers/Fast.pm
-    version: 0.14
+    version: 0.15
 requires:
   HTTP::Date: 0
   perl: 5.00800
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.14
+version: 0.15
