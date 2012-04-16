@@ -23,7 +23,8 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Test::More" : "0.98",
+            "Test::Requires" : "0"
          }
       },
       "configure" : {
@@ -41,7 +42,7 @@
    "provides" : {
       "HTTP::Headers::Fast" : {
          "file" : "lib/HTTP/Headers/Fast.pm",
-         "version" : "0.15"
+         "version" : "0.16"
       }
    },
    "release_status" : "stable",
@@ -50,5 +51,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.15"
+   "version" : "0.16"
 }
